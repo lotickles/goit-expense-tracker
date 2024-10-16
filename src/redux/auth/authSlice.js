@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, logIn, logOut, refreshUser } from "./authOperation";
+import {
+  registerThunk,
+  loginThunk,
+  logoutThunk,
+  refreshThunk,
+} from "../../redux/auth/operations";
 // import { axios } from 'axios';
 
 const initialAuthState = {
