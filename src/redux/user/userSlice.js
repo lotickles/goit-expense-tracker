@@ -1,18 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 import {
   getCurrentUserThunk,
   updateUserInfoThunk,
   changeAvatarThunk,
   deleteAvatarThunk,
-} from './operations.js';
-import { loginThunk, registerThunk } from '../auth/operations.js';
-import { createTransactionThunk } from 'redux/transactions/operations.js';
+} from "./operations.js";
+import { loginThunk, registerThunk } from "../auth/operations.js";
+import { createTransactionThunk } from "redux/transactions/operations.js";
 
 const initialState = {
   user: {
-    name: '',
-    email: '',
-    currency: '',
+    name: "",
+    email: "",
+    currency: "",
     avatarUrl: null,
   },
   loading: false,
@@ -20,12 +20,12 @@ const initialState = {
 };
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {},
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
-      .addCase(getCurrentUserThunk.pending, state => {
+      .addCase(getCurrentUserThunk.pending, (state) => {
         state.loading = true;
       })
       .addCase(getCurrentUserThunk.fulfilled, (state, action) => {
@@ -43,7 +43,7 @@ const userSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      .addCase(updateUserInfoThunk.pending, state => {
+      .addCase(updateUserInfoThunk.pending, (state) => {
         state.loading = true;
       })
       .addCase(updateUserInfoThunk.fulfilled, (state, action) => {
@@ -59,7 +59,7 @@ const userSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      .addCase(changeAvatarThunk.pending, state => {
+      .addCase(changeAvatarThunk.pending, (state) => {
         state.loading = true;
       })
       .addCase(changeAvatarThunk.fulfilled, (state, action) => {
@@ -73,7 +73,7 @@ const userSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      .addCase(deleteAvatarThunk.pending, state => {
+      .addCase(deleteAvatarThunk.pending, (state) => {
         state.loading = true;
       })
       .addCase(deleteAvatarThunk.fulfilled, (state, action) => {

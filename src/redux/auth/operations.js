@@ -2,19 +2,17 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 axios.defaults.baseURL = "https://goit-expense-tracker.b.goit.study/api/";
-// axios.defaults.baseURL = 'https://goit-task-manager.herokuapp.com/';
 
 // Utility to add JWT
 const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
-
 // Utility to remove JWT
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = "";
 };
 
-export const register = createAsyncThunk(
+export const registerThunk = createAsyncThunk(
   "auth/register",
   async ({ name, email, password }, thunkAPI) => {
     try {
@@ -31,7 +29,7 @@ export const register = createAsyncThunk(
     }
   }
 );
-export const logIn = createAsyncThunk(
+export const loginThunk = createAsyncThunk(
   "auth/logIn",
   async ({ email, password }, thunkAPI) => {
     try {
@@ -43,15 +41,18 @@ export const logIn = createAsyncThunk(
     }
   }
 );
-export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
-  try {
-    await axios.post("/users/logout");
-    clearAuthHeader();
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+export const logoutThunk = createAsyncThunk(
+  "auth/logout",
+  async (_, thunkAPI) => {
+    try {
+      await axios.post("/users/logout");
+      clearAuthHeader();
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-});
-export const refreshUser = createAsyncThunk(
+);
+export const refreshThunk = createAsyncThunk(
   "auth/refreshUser",
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
