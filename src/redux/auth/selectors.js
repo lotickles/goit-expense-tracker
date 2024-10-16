@@ -5,6 +5,7 @@ export const selectUser = (state) => state.auth.user;
 export const selectIsLoggedIn = (state) => {
   return state.auth.isLoggedIn;
 };
+export const selectEmail = (state) => state.auth.email;
 export const selectIsRefreshing = (state) => state.auth.isRefreshing;
 
 // Define a selector for the user's name
