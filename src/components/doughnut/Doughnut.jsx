@@ -1,13 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { Doughnut } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
-import randomColor from 'randomcolor';
+import randomColor from "randomcolor";
 
-import { selectTransaction } from 'redux/transactions/selectors';
-
+import { selectTransaction } from "../../redux/transactions/selectors";
+// redux/transactions/selectors
 import {
   DoughnutWrapper,
   ItemStyled,
@@ -16,7 +16,7 @@ import {
   MainWrapper,
   StatisticsPlug,
   Wrapper,
-} from './Doughnut.styled';
+} from "./Doughnut.styled";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -30,7 +30,7 @@ const DoughnutComponent = () => {
   const [items, setItems] = useState(null);
 
   const data = () => {
-    const newData = items?.map(item => item.sum);
+    const newData = items?.map((item) => item.sum);
     const segmentColors = items?.map(() => randomColor());
     return {
       labels: [],
@@ -60,7 +60,7 @@ const DoughnutComponent = () => {
   function getCategoryesTransactions(transactions) {
     if (transactions) {
       const categorySums = {};
-      transactions.forEach(item => {
+      transactions.forEach((item) => {
         const categoryName = item.category?.categoryName;
         if (categoryName) {
           if (categorySums[categoryName]) {
@@ -70,7 +70,7 @@ const DoughnutComponent = () => {
           }
         }
         const totalSum = transactions.reduce((acc, item) => acc + item.sum, 0);
-        const newItems = Object.keys(categorySums).map(categoryName => ({
+        const newItems = Object.keys(categorySums).map((categoryName) => ({
           category: { categoryName },
           sum: categorySums[categoryName],
           percentage: ((categorySums[categoryName] / totalSum) * 100).toFixed(
@@ -83,7 +83,7 @@ const DoughnutComponent = () => {
     }
   }
 
-  const handleChartHover = elements => {
+  const handleChartHover = (elements) => {
     if (elements.length > 0) {
       const clickedElement = elements[0];
       const index = clickedElement.index;
@@ -93,9 +93,9 @@ const DoughnutComponent = () => {
 
         if (listItem) {
           listItem.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center',
-            inline: 'center',
+            behavior: "smooth",
+            block: "center",
+            inline: "center",
           });
         }
       }

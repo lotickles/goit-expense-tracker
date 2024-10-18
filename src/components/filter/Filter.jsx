@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import 'react-datepicker/dist/react-datepicker.css';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import "react-datepicker/dist/react-datepicker.css";
 
-import { selectFilter, selectStartDate } from 'redux/filter/filterSelector';
-import { setFilter, setStartDate } from 'redux/filter/filterSlice';
+import {
+  selectFilter,
+  selectStartDate,
+} from "../../redux/filter/filterSelector";
+import { setFilter, setStartDate } from "../../redux/filter/filterSlice";
 
 import {
   DIV,
@@ -12,8 +15,8 @@ import {
   INP,
   StyledDatePicker,
   SvgI,
-} from './Filter.styled';
-import svg from '../../images/Sprite.svg';
+} from "./Filter.styled";
+import svg from "../../images/Sprite.svg";
 
 export const Filter = () => {
   const filter = useSelector(selectFilter);
@@ -22,13 +25,13 @@ export const Filter = () => {
 
   const [tempFilter, setTempFilter] = useState(filter);
 
-  const onFilterChange = e => {
+  const onFilterChange = (e) => {
     setTempFilter(e.target.value);
   };
 
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const handleDateChange = date => {
+  const handleDateChange = (date) => {
     setSelectedDate(date);
     if (date) {
       const year = date.getFullYear();
@@ -38,7 +41,7 @@ export const Filter = () => {
     }
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(setFilter(tempFilter));
   };
@@ -55,7 +58,7 @@ export const Filter = () => {
           />
           <button type="submit">
             <SvgI width={20} height={20}>
-              <use href={svg + '#icon-search'}></use>
+              <use href={svg + "#icon-search"}></use>
             </SvgI>
           </button>
         </label>
@@ -69,7 +72,7 @@ export const Filter = () => {
           placeholderText="dd/mm/yyyy"
         />
         <SvgI width={20} height={20}>
-          <use href={svg + '#icon-calendar'}></use>
+          <use href={svg + "#icon-calendar"}></use>
         </SvgI>
       </DivDatePicker>
     </DIV>

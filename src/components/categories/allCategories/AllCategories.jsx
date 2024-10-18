@@ -1,27 +1,27 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import {
   getCategoriesThunk,
   createCategoryThunk,
   deleteCategoryThunk,
   updateCategoryThunk,
-} from 'redux/category/operations';
-import { selectCategories } from 'redux/category/selectors';
-import { selectIsLoggedIn } from 'redux/auth/selectors';
+} from "../../../redux/category/operations";
+import { selectCategories } from "../../../redux/category/selectors";
+import { selectIsLoggedIn } from "../../../redux/auth/selectors";
 import {
   CategoriesDiv,
   CategoriesList,
   CategoriesPlugP,
   AllCategoriesP,
   TransactionType,
-} from './AllCategories.styled.js';
-import { CategoryForm } from '../categoryForm/CategoryForm';
-import { OneCategory } from 'components/categories/oneCategory/OneCategory.jsx';
-import { schemaCategoryInput } from 'helpers/schemas';
+} from "./AllCategories.styled.jsx";
+import { CategoryForm } from "../categoryForm/CategoryForm";
+import { OneCategory } from "../../../components/categories/oneCategory";
+import { schemaCategoryInput } from "../../../helpers/schemas";
 
 export const AllCategories = ({
   type,
@@ -52,8 +52,8 @@ export const AllCategories = ({
     if (isLoggedIn) {
       dispatch(getCategoriesThunk())
         .unwrap()
-        .catch(e => {
-          toast.error('Oops, something went wrong. Try to reload page');
+        .catch((e) => {
+          toast.error("Oops, something went wrong. Try to reload page");
         });
     }
   }, [dispatch, isLoggedIn, type]);
@@ -64,14 +64,14 @@ export const AllCategories = ({
     }
   }, [categories, type]);
 
-  const editCategory = category => {
+  const editCategory = (category) => {
     setCurrentCategory(category);
     reset({ categoryName: category.categoryName });
     setIsEditing(true);
   };
 
   const onCancel = () => {
-    reset({ categoryName: '' });
+    reset({ categoryName: "" });
     setCurrentCategory(null);
     setIsEditing(false);
   };
@@ -80,21 +80,21 @@ export const AllCategories = ({
     const categoryDate = { type, categoryName };
 
     const addedCategory = addedCategories.find(
-      category => category.categoryName === categoryName
+      (category) => category.categoryName === categoryName
     );
 
     if (addedCategory) {
-      toast.warning('Category with this name already exists');
+      toast.warning("Category with this name already exists");
       return;
     }
 
     if (currentCategory) {
       dispatch(updateCategoryThunk({ id: currentCategory._id, categoryName }))
         .unwrap()
-        .catch(e => {
-          toast.error('Oops, something went wrong. Try to reload page');
+        .catch((e) => {
+          toast.error("Oops, something went wrong. Try to reload page");
         });
-      reset({ categoryName: '' });
+      reset({ categoryName: "" });
       setIsEditing(false);
     } else {
       dispatch(createCategoryThunk(categoryDate))
@@ -105,25 +105,25 @@ export const AllCategories = ({
               categoriesListRef.current.scrollHeight;
           }
         })
-        .catch(e => {
-          toast.error('Oops, something went wrong. Try to reload page');
+        .catch((e) => {
+          toast.error("Oops, something went wrong. Try to reload page");
         });
     }
     reset();
     setCurrentCategory(null);
   };
 
-  const deleteCategory = id => {
+  const deleteCategory = (id) => {
     if (currentCategory && currentCategory._id === id) {
-      reset({ categoryName: '' });
+      reset({ categoryName: "" });
       setCurrentCategory(null);
       setIsEditing(false);
     }
 
     dispatch(deleteCategoryThunk(id))
       .unwrap()
-      .catch(e => {
-        toast.error('Oops, something went wrong. Try to reload page');
+      .catch((e) => {
+        toast.error("Oops, something went wrong. Try to reload page");
       });
   };
 
@@ -133,7 +133,7 @@ export const AllCategories = ({
       <AllCategoriesP>All categories</AllCategoriesP>
       <CategoriesList ref={categoriesListRef}>
         {categories[type]?.length ? (
-          categories[type]?.map(category => (
+          categories[type]?.map((category) => (
             <OneCategory
               setCategoryId={setCategoryId}
               closeModal={closeModal}

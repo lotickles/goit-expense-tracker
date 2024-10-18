@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
-import { registerThunk } from 'redux/auth/operations';
+import { registerThunk } from "redux/auth/operations";
 
 import {
   ButtonSign,
@@ -12,16 +12,16 @@ import {
   Line,
   PasswordMessage,
   PasswordToggle,
-  Spn,
+  Span,
   StyledInput,
   StyledPasswordInput,
   WrapBt,
   WrapInPass,
   WrapInp,
   WrapPassword,
-} from './RegisterForm.styled';
-import { ReactComponent as ShowsIco } from '../../images/home/eye.svg';
-import { ReactComponent as HideIco } from '../../images/home/eye-off.svg';
+} from "./RegisterForm.styled";
+import { ReactComponent as ShowsIco } from "../../images/home/eye.svg";
+import { ReactComponent as HideIco } from "../../images/home/eye-off.svg";
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -32,25 +32,25 @@ export const RegisterForm = () => {
     formState: { errors: formErrors },
   } = useForm();
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     dispatch(registerThunk(data))
       .unwrap()
-      .catch(error => {
-        toast.error('Invalid email or email already exists in the database');
+      .catch((error) => {
+        toast.error("Invalid email or email already exists in the database");
       });
   };
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
   const isPasswordValid = () => {
     return password.length >= 6 && !formErrors.password;
   };
-  const handlePasswordChange = e => {
+  const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
     setPassword(newPassword);
-    setValue('password', newPassword);
+    setValue("password", newPassword);
   };
 
   return (
@@ -58,11 +58,11 @@ export const RegisterForm = () => {
       <WrapInp>
         <div>
           <StyledInput
-            {...register('name', {
-              required: 'Please provide your name',
+            {...register("name", {
+              required: "Please provide your name",
               minLength: {
                 value: 3,
-                message: 'Please enter a name with at least 3 characters',
+                message: "Please enter a name with at least 3 characters",
               },
             })}
             type="text"
@@ -74,11 +74,11 @@ export const RegisterForm = () => {
         <div>
           <StyledInput
             defaultValue=""
-            {...register('email', {
-              required: 'Please provide your email',
+            {...register("email", {
+              required: "Please provide your email",
               minLength: {
                 value: 3,
-                message: 'Ensure your email is at least 3 characters long',
+                message: "Ensure your email is at least 3 characters long",
               },
             })}
             type="email"
@@ -90,15 +90,15 @@ export const RegisterForm = () => {
         <WrapPassword>
           <WrapInPass>
             <StyledPasswordInput
-              {...register('password', {
-                required: 'Enter a valid Password',
+              {...register("password", {
+                required: "Enter a valid Password",
                 minLength: {
                   value: 6,
                   message:
-                    'Make sure your password is at least 6 characters long',
+                    "Make sure your password is at least 6 characters long",
                 },
               })}
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               autoComplete="new-password"
               // hasError={!!formErrors.password}
@@ -106,10 +106,10 @@ export const RegisterForm = () => {
               onChange={handlePasswordChange}
               className={`${
                 password.length === 0
-                  ? 'empty'
+                  ? "empty"
                   : isPasswordValid()
-                  ? 'valid'
-                  : 'invalid'
+                  ? "valid"
+                  : "invalid"
               }`}
             />
             <PasswordToggle onClick={togglePasswordVisibility} type="button">
@@ -122,7 +122,7 @@ export const RegisterForm = () => {
 
           {password.length > 0 && (
             <PasswordMessage $isGood={password.length >= 6}>
-              {password.length >= 6 ? 'Good password' : 'Short password'}
+              {password.length >= 6 ? "Good password" : "Short password"}
             </PasswordMessage>
           )}
         </WrapPassword>
@@ -132,9 +132,9 @@ export const RegisterForm = () => {
 
         <Line>
           <p>Have an account already? </p>
-          <Link to={'/login'}>
-            {' '}
-            <Spn>Log in now</Spn>
+          <Link to={"/login"}>
+            {" "}
+            <Span>Log in now</Span>
           </Link>
         </Line>
       </WrapInp>

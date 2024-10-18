@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledInput = styled.input`
   padding-top: 12px;
@@ -213,7 +213,7 @@ export const StyledPasswordInput = styled.input`
 
   &:not(:focus):hover {
     border-color: ${({ className }) =>
-      className && className.includes('invalid') ? '#e74a3b' : '#0ef387'};
+      className && className.includes("invalid") ? "#e74a3b" : "#0ef387"};
   }
   @media (min-width: 768px) and (max-width: 1439.8px) {
     width: 399px;
@@ -265,7 +265,7 @@ export const Line = styled.div`
   flex-direction: row;
   gap: 2px;
   color: rgba(250, 250, 250, 0.6);
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings: "clig" off, "liga" off;
   font-family: Suisse Intl;
   font-size: 12px;
   font-style: normal;
@@ -275,14 +275,14 @@ export const Line = styled.div`
     color: #fafafa;
   }
 `;
-export const Spn = styled.div`
+export const Span = styled.div`
   color: #fafafa;
   text-decoration: underline;
 `;
 export const PasswordMessage = styled.p`
   font-size: 12px;
   /* color: #0ef387; */
-  color: ${props => (props.$isGood ? '#0ef387' : '#E74A3B')};
+  color: ${(props) => (props.$isGood ? "#0ef387" : "#E74A3B")};
   margin-top: 5px;
   padding-left: 12px;
 `;

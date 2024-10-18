@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
-import Modal from 'components/modal/Modal';
-import { selectIsLoggedIn } from 'redux/auth/selectors';
-import { selectUser } from 'redux/user/selectors';
-import { useModal } from 'components/hooks/useModal';
-import UserSetsModal from 'components/userSetsModal/UserSetsModal';
-import LogOutModal from 'components/logOutModal/LogOutModal';
+import Modal from "../modal/Modal";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import { selectUser } from "../../redux/user/selectors";
+import { useModal } from "../hooks/useModal";
+import UserSetsModal from "../userSetsModal/UserSetsModal";
+import LogOutModal from "../logOutModal/LogOutModal";
 
 import {
   HeaderLink,
@@ -38,8 +38,8 @@ import {
   DarkBackDrop,
   HeaderBurgerMenu,
   UsualBackDrop,
-} from './headerStyled';
-import Symbols from 'images/svg/Symbols';
+} from "./headerStyled";
+import Symbols from "images/svg/Symbols";
 
 const Header = () => {
   const location = useLocation();
@@ -72,72 +72,72 @@ const Header = () => {
   };
 
   const handleMenu = () => {
-    setIsOpen(prev => !prev);
+    setIsOpen((prev) => !prev);
 
     if (isOpen) {
       setHideOrShow(() => {
-        document.body.style.overflow = 'visible';
+        document.body.style.overflow = "visible";
         return {};
       });
     } else {
       setHideOrShow(() => {
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = "hidden";
         return {
-          display: 'flex',
+          display: "flex",
         };
       });
     }
   };
 
   const hanldeBtnList = () => {
-    setHideOrShowList(prev => ({
-      display: prev.display === 'flex' ? 'none' : 'flex',
+    setHideOrShowList((prev) => ({
+      display: prev.display === "flex" ? "none" : "flex",
     }));
     setIsRotated(!isRotated);
   };
 
   const hanldeSecondBtnList = () => {
-    setHideOrHeaderProfileSettings(prev => ({
-      display: prev.display === 'flex' ? 'none' : 'flex',
+    setHideOrHeaderProfileSettings((prev) => ({
+      display: prev.display === "flex" ? "none" : "flex",
     }));
     setIsRotated(!isRotated);
   };
 
   useEffect(() => {
-    const handleKeyDown = event => {
+    const handleKeyDown = (event) => {
       if (isOpened) {
         return;
       }
 
-      if (event.key === 'Escape') {
-        setHideOrShowList({ display: 'none' });
-        setHideOrHeaderProfileSettings({ display: 'none' });
-        setHideOrShow({ display: 'none' });
+      if (event.key === "Escape") {
+        setHideOrShowList({ display: "none" });
+        setHideOrHeaderProfileSettings({ display: "none" });
+        setHideOrShow({ display: "none" });
         setIsRotated(false);
-        document.body.style.overflow = 'visible';
+        document.body.style.overflow = "visible";
       }
     };
 
-    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpened]);
 
   const handleBackDrop = ({ currentTarget, target }) => {
     if (currentTarget === target) {
-      setHideOrShowList({ display: 'none' });
-      setHideOrHeaderProfileSettings({ display: 'none' });
-      setHideOrShow({ display: 'none' });
+      setHideOrShowList({ display: "none" });
+      setHideOrHeaderProfileSettings({ display: "none" });
+      setHideOrShow({ display: "none" });
       setIsRotated(false);
-      document.body.style.overflow = 'visible';
+      document.body.style.overflow = "visible";
     }
   };
   const handleBackDropForLinks = ({ currentTarget, target }) => {
     if (currentTarget === target) {
-      setHideOrShowList({ display: 'none' });
-      setHideOrHeaderProfileSettings({ display: 'none' });
+      setHideOrShowList({ display: "none" });
+      setHideOrHeaderProfileSettings({ display: "none" });
     }
   };
   if (!isLoggedIn) {
@@ -203,7 +203,7 @@ const Header = () => {
               width={20}
               height={20}
               style={{
-                transform: isRotated ? 'rotate(180deg)' : 'rotate(0)',
+                transform: isRotated ? "rotate(180deg)" : "rotate(0)",
               }}
             >
               <use xlinkHref="#user-icon-down" />
@@ -241,7 +241,7 @@ const Header = () => {
             onClick={hanldeBtnList}
             initial={{ y: -250 }}
             animate={{ y: 0 }}
-            transition={{ duration: 0.6, type: 'spring', stiffness: 270 }}
+            transition={{ duration: 0.6, type: "spring", stiffness: 270 }}
           >
             {avatarUrl ? (
               <UserImgContainer>
@@ -257,7 +257,7 @@ const Header = () => {
               width={20}
               height={20}
               style={{
-                transform: isRotated ? 'rotate(180deg)' : 'rotate(0)',
+                transform: isRotated ? "rotate(180deg)" : "rotate(0)",
               }}
             >
               <use xlinkHref="#user-icon-down" />
@@ -287,7 +287,7 @@ const Header = () => {
             onClick={handleMenu}
             initial={{ y: -250 }}
             animate={{ y: 0 }}
-            transition={{ duration: 0.8, type: 'spring', stiffness: 230 }}
+            transition={{ duration: 0.8, type: "spring", stiffness: 230 }}
           >
             <svg width={30} height={30}>
               <use xlinkHref="#icon-close" />

@@ -4,7 +4,7 @@ import {
   loginThunk,
   logoutThunk,
   refreshThunk,
-} from "../../redux/auth/operations";
+} from "../../redux/auth/auth/operations";
 // import { axios } from 'axios';
 
 const initialAuthState = {

@@ -1,15 +1,13 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-
-import { logoutThunk } from 'redux/auth/operations';
-
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logoutThunk } from "../../redux/auth/operations";
 import {
   StyledLogOutButton,
   StyledLogOutButtonWrapper,
   StyledLogOutText,
   StyledLogOutWrapper,
-} from './LogOutModal.Styled';
+} from "./LogOutModal.Styled";
 
 const LogOutModal = ({ closeModal, setHideOrShow, setHideOrShowList }) => {
   const dispatch = useDispatch();
@@ -20,12 +18,12 @@ const LogOutModal = ({ closeModal, setHideOrShow, setHideOrShowList }) => {
     dispatch(logoutThunk())
       .unwrap()
       .then(() => {
-        setHideOrShowList(prev => ({ display: 'none' }));
+        setHideOrShowList((prev) => ({ display: "none" }));
         closeModal();
         setHideOrShow({
-          display: 'none',
+          display: "none",
         });
-        navigate('/login');
+        navigate("/login");
       });
   };
 

@@ -1,15 +1,15 @@
-import React, { useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { selectLoading, selectUser } from 'redux/user/selectors';
+import { selectLoading, selectUser } from "redux/user/selectors";
 import {
   changeAvatarThunk,
   deleteAvatarThunk,
   updateUserInfoThunk,
-} from 'redux/user/operations';
-import { CirclesWithBar } from 'react-loader-spinner';
+} from "../../redux/user/selectors";
+import { BallTriangle } from "react-loader-spinner";
 
-import Symbols from 'images/svg/Symbols';
+import Symbols from "../../images/svg/Symbols.svg";
 import {
   GrayButton,
   StyledBtnWrap,
@@ -22,13 +22,13 @@ import {
   StyledSvgWrap,
   StyledTitle,
   StyledWrap,
-} from 'components/userSetsModal/UserSetsModal.styled';
-import { toast } from 'react-toastify';
+} from "../userSetsModal/UserSetsModal.styled";
+import { toast } from "react-toastify";
 
 const CURRENCIES = [
-  { value: 'uah', label: '₴ UAH' },
-  { value: 'usd', label: '$ USD' },
-  { value: 'eur', label: '€ EUR' },
+  { value: "uah", label: "₴ UAH" },
+  { value: "usd", label: "$ USD" },
+  { value: "eur", label: "€ EUR" },
 ];
 
 const UserSetsModal = ({ closeModal }) => {
@@ -41,10 +41,10 @@ const UserSetsModal = ({ closeModal }) => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(
-    CURRENCIES.find(option => option.value === user.currency)
+    CURRENCIES.find((option) => option.value === user.currency)
   );
 
-  const handleOptionClick = option => {
+  const handleOptionClick = (option) => {
     setSelectedOption(option);
     setIsOpen(false);
   };
@@ -57,11 +57,11 @@ const UserSetsModal = ({ closeModal }) => {
       dispatch(changeAvatarThunk(avatar))
         .unwrap()
         .then(() => {
-          toast.success('Avatar has been updated successfully!');
+          toast.success("Avatar has been updated successfully!");
         })
-        .catch(e => {
+        .catch((e) => {
           toast.error(
-            'Oops, something went wrong! Try again or upload smaller photo!'
+            "Oops, something went wrong! Try again or upload smaller photo!"
           );
         });
     }
@@ -72,15 +72,15 @@ const UserSetsModal = ({ closeModal }) => {
       dispatch(deleteAvatarThunk(user._id))
         .unwrap()
         .then(() => {
-          toast.success('Avatar has been removed successfully!');
+          toast.success("Avatar has been removed successfully!");
         })
-        .catch(e => {
-          toast.error('Oops, something went wrong! Try again!');
+        .catch((e) => {
+          toast.error("Oops, something went wrong! Try again!");
         });
     }
   };
 
-  const handleSave = e => {
+  const handleSave = (e) => {
     e.preventDefault();
     const data = {
       name: userName,
@@ -89,7 +89,7 @@ const UserSetsModal = ({ closeModal }) => {
 
     dispatch(updateUserInfoThunk(data));
     if (selectedOption.value !== user.currency || userName !== user.name) {
-      toast.success('Your profile info has been changed successfully!');
+      toast.success("Your profile info has been changed successfully!");
     }
 
     closeModal();
@@ -103,7 +103,7 @@ const UserSetsModal = ({ closeModal }) => {
           <StyledSvgWrap>
             {loading ? (
               <StyledLoader>
-                <CirclesWithBar />
+                <BallTriangle />
               </StyledLoader>
             ) : (
               <img src={user.avatarUrl} alt="user avatar" />
@@ -114,7 +114,7 @@ const UserSetsModal = ({ closeModal }) => {
             <Symbols />
             {loading ? (
               <StyledLoader>
-                <CirclesWithBar />
+                <BallTriangle />
               </StyledLoader>
             ) : (
               <svg width={38} height={38}>
@@ -140,7 +140,7 @@ const UserSetsModal = ({ closeModal }) => {
 
         <form onSubmit={handleSave}>
           <StyledBtnWrap>
-            <StyledSelect className={isOpen ? 'select-open' : ''}>
+            <StyledSelect className={isOpen ? "select-open" : ""}>
               <div
                 onClick={() => {
                   setIsOpen(!isOpen);
@@ -155,7 +155,7 @@ const UserSetsModal = ({ closeModal }) => {
               </div>
               {isOpen && (
                 <ul className="select-options">
-                  {CURRENCIES.map(option => (
+                  {CURRENCIES.map((option) => (
                     <li
                       key={option.value}
                       onClick={() => handleOptionClick(option)}

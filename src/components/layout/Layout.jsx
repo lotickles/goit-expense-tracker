@@ -1,8 +1,7 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React from "react";
+import { Outlet } from "react-router-dom";
 
-import Header from 'components/header/Header';
-// import { FramerMotion } from 'helpers/framer-motion';
+import Header from "../header/Header";
 
 const Layout = () => {
   return (

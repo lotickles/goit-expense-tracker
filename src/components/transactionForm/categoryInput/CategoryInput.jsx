@@ -1,31 +1,31 @@
 // base
-import React from 'react';
-import { useParams } from 'react-router';
+import React from "react";
+import { useParams } from "react-router";
 
 // modal
-import Modal from 'components/modal/Modal';
-import { useModal } from 'components/hooks/useModal';
+import Modal from "../../modal/Modal";
+import { useModal } from "../../hooks/useModal";
 
 // form
-import { Controller } from 'react-hook-form';
+import { Controller } from "react-hook-form";
 
-// components
-import { AllCategories } from 'components/categories/allCategories/AllCategories';
+// // components
+// import { AllCategories } from "../../categories/allCategories";
 
 // styled
 import {
   StyledInputWrapper,
   StyledLabel,
   StyledCategoryInput,
-} from './CategoryInput.styled';
+} from "./CategoryInput.styled";
 
 const CategoryInput = ({ control, setValue, setCategoryId, type }) => {
   const { isOpened, openModal, closeModal } = useModal();
   const { transactionsType } = useParams();
 
-  const handleSetCategory = selectedCategory => {
+  const handleSetCategory = (selectedCategory) => {
     setCategoryId(selectedCategory.id);
-    setValue('category', selectedCategory);
+    setValue("category", selectedCategory);
   };
 
   return (
@@ -41,7 +41,7 @@ const CategoryInput = ({ control, setValue, setCategoryId, type }) => {
             placeholder="Different"
             {...field}
             value={field.value}
-            onClick={event => {
+            onClick={(event) => {
               openModal();
               event.target.blur();
             }}

@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
-
-import { loginThunk } from 'redux/auth/operations';
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { loginThunk } from "../../redux/auth/operations";
 
 import {
   ButtonSign,
@@ -12,17 +11,17 @@ import {
   Line,
   PasswordMessage,
   PasswordToggle,
-  Spn,
+  Span,
   StyledInput,
   StyledPasswordInput,
   WrapInPass,
   WrapInp,
   WrapPassword,
-} from 'components/RegisterForm/RegisterForm.styled';
+} from "./../RegisterForm/RegisterForm.styled";
 
-import { ReactComponent as ShowsIco } from '../../images/home/eye.svg';
-import { ReactComponent as HideIco } from '../../images/home/eye-off.svg';
-import { WrapBts } from './LoginForm.styled';
+import { ReactComponent as ShowsIco } from "../../images/home/eye.svg";
+import { ReactComponent as HideIco } from "../../images/home/eye-off.svg";
+import { WrapBts } from "./LoginForm.styled";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -33,26 +32,26 @@ export const LoginForm = () => {
     formState: { errors: formErrors },
   } = useForm();
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     dispatch(loginThunk(data))
       .unwrap()
-      .catch(error => {
-        toast.error('Invalid email or password');
+      .catch((error) => {
+        toast.error("Invalid email or password");
       });
   };
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
   const isPasswordValid = () => {
     return password.length >= 6 && !formErrors.password;
   };
 
-  const handlePasswordChange = e => {
+  const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
     setPassword(newPassword);
-    setValue('password', newPassword);
+    setValue("password", newPassword);
   };
 
   return (
@@ -61,11 +60,11 @@ export const LoginForm = () => {
         <div>
           <StyledInput
             defaultValue=""
-            {...register('email', {
-              required: 'Please provide your email',
+            {...register("email", {
+              required: "Please provide your email",
               minLength: {
                 value: 6,
-                message: 'Ensure your email is at least 6 characters long',
+                message: "Ensure your email is at least 6 characters long",
               },
             })}
             type="email"
@@ -78,14 +77,14 @@ export const LoginForm = () => {
         <WrapPassword>
           <WrapInPass>
             <StyledPasswordInput
-              {...register('password', {
-                required: 'Enter a valid Password',
+              {...register("password", {
+                required: "Enter a valid Password",
                 minLength: {
                   value: 6,
                   // message: 'Make sure your password is at least 6 characters long',
                 },
               })}
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               autoComplete="new-password"
               // hasError={!!formErrors.password}
@@ -93,10 +92,10 @@ export const LoginForm = () => {
               // isGood={password.length >= 6}
               className={`${
                 password.length === 0
-                  ? 'empty'
+                  ? "empty"
                   : isPasswordValid()
-                  ? 'valid'
-                  : 'invalid'
+                  ? "valid"
+                  : "invalid"
               }`}
             />
             <PasswordToggle onClick={togglePasswordVisibility} type="button">
@@ -108,7 +107,7 @@ export const LoginForm = () => {
           )}
           {password.length > 0 && (
             <PasswordMessage $isGood={password.length >= 6}>
-              {password.length >= 6 ? 'Good password' : 'Short password'}
+              {password.length >= 6 ? "Good password" : "Short password"}
             </PasswordMessage>
           )}
         </WrapPassword>
@@ -119,8 +118,8 @@ export const LoginForm = () => {
 
         <Line>
           <p>New here?</p>
-          <Link to={'/register'}>
-            <Spn>Create an account</Spn>{' '}
+          <Link to={"/register"}>
+            <Span>Create an account</Span>{" "}
           </Link>
         </Line>
       </WrapInp>

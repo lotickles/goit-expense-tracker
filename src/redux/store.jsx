@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
 import {
   persistStore,
   persistReducer,
@@ -8,18 +8,18 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import { authReducer } from './auth/authSlice';
-import { userReducer } from './user/userSlice';
-import { transactionReducer } from './transactions/transactionsSlice';
-import { categoriesReducer } from './category/categorySlice';
-import { filterReducer } from './filter/filterSlice';
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
+// import { authReducer } from "";
+import { userReducer } from "./user/userSlice";
+import { transactionReducer } from "./transactions/transactionsSlice";
+import { categoriesReducer } from "./category/categorySlice";
+import { filterReducer } from "./filter/filterSlice";
 
 const authPersistConfig = {
-  key: 'auth',
+  key: "auth",
   storage,
-  whitelist: ['accessToken', 'sid', 'refreshToken'],
+  whitelist: ["accessToken", "sid", "refreshToken"],
 };
 
 export const store = configureStore({
@@ -30,7 +30,7 @@ export const store = configureStore({
     categories: categoriesReducer,
     filter: filterReducer,
   },
-  middleware: getDefaultMiddleware =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],

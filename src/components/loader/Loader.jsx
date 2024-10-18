@@ -1,22 +1,22 @@
-import React from 'react';
-import { CirclesWithBar } from 'react-loader-spinner';
-import { StyledLoaderWrapper } from './Loader.styled';
+import React from "react";
+import { BallTriangle } from "react-loader-spinner";
+import { StyledLoaderWrapper } from "./Loader.styled";
 
 const Loader = () => {
   return (
     <StyledLoaderWrapper>
-      <CirclesWithBar
-        height="100"
-        width="100"
+      (
+      <BallTriangle
+        height={100}
+        width={100}
+        radius={5}
         color="#4fa94d"
+        ariaLabel="ball-triangle-loading"
         wrapperStyle={{}}
         wrapperClass=""
         visible={true}
-        outerCircleColor=""
-        innerCircleColor=""
-        barColor=""
-        ariaLabel="circles-with-bar-loading"
       />
+      )
     </StyledLoaderWrapper>
   );
 };
