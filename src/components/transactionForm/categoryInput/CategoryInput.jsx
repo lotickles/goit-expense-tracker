@@ -9,9 +9,6 @@ import { useModal } from "../../hooks/useModal";
 // form
 import { Controller } from "react-hook-form";
 
-// // components
-// import { AllCategories } from "../../categories/allCategories";
-
 // styled
 import {
   StyledInputWrapper,

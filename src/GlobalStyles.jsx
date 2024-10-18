@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import fontBold from "../fonts/Suisse-Intl-Bold.ttf";
-import fontRegular from "../fonts/SuisseIntl-Regular.ttf";
+import fontBold from "./fonts/Suisse-Intl-Bold.ttf";
+import fontRegular from "./fonts/SuisseIntl-Regular.ttf";
 
 export const GlobalStyles = createGlobalStyle`
 @font-face {
@@ -15,13 +15,6 @@ export const GlobalStyles = createGlobalStyle`
     src: url(${fontBold}) format('truetype');
 }
 
-#root{
-  flex-flow: column;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 body{
 font-family: 'Suisse Intl', sans-serif;
 background-color: #0C0D0D;

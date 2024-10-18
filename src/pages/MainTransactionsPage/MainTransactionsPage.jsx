@@ -8,7 +8,7 @@ import { selectIsLoggedIn } from "../../redux/auth/selectors";
 // components
 import { TotalIncome, TotalExpense } from "../../shared/Total";
 import OperationForm from "../../shared/OperationForm/OperationForm";
-import DoughnutComponent from "components/doughnut/Doughnut";
+import DoughnutComponent from "../../components/doughnut/Doughnut";
 
 // styled
 import {
@@ -22,9 +22,9 @@ import {
 } from "./MainTransactionsPage.styled";
 
 // thunk's
-import { getTransactionsThunk } from "redux/transactions/operations";
+import { getTransactionsThunk } from "../../redux/transactions/operations";
 import { Navigate } from "react-router-dom";
-import { FramerMotion } from "helpers/framer-motion";
+import { FramerMotion } from "../../helpers/framer-motion";
 
 const MainTransactionsPage = () => {
   // adaptive design

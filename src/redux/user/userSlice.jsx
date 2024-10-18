@@ -5,8 +5,8 @@ import {
   changeAvatarThunk,
   deleteAvatarThunk,
 } from "./operations.js";
-import { loginThunk, registerThunk } from "../auth/operations.js";
-import { createTransactionThunk } from "redux/transactions/operations.js";
+import { loginThunk, registerThunk } from "../auth/operations.jsx";
+import { createTransactionThunk } from "../transactions/operations.jsx";
 
 const initialState = {
   user: {
@@ -89,5 +89,4 @@ const userSlice = createSlice({
       });
   },
 });
-
 export const userReducer = userSlice.reducer;

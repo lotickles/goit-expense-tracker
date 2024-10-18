@@ -1,24 +1,24 @@
-import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { useSelector } from 'react-redux';
+import { Helmet, HelmetProvider } from "react-helmet-async";
+import { useSelector } from "react-redux";
 
-import { selectIsLoggedIn } from 'redux/auth/selectors';
-import RegisterForm from 'components/RegisterForm/RegisterForm';
-import { TotalIncome } from 'shared/Total';
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import RegisterForm from "../../components/RegisterForm/RegisterForm";
+import { TotalIncome } from "../../shared/Total";
 
-import { AdaptDiv, H2 } from 'pages/Home/Home.styled';
+import { AdaptDiv, H2 } from "../../pages/Home/Home.styled";
 import {
   PlugDivs,
   TableDivs,
   Texts,
   WrapForm,
   WrapperS,
-} from './Register.styled';
-import { ImgAuth } from 'components/RegisterForm/RegisterForm.styled';
+} from "./Register.styled";
+import { ImgAuth } from "../../components/RegisterForm/RegisterForm.styled";
 
-import homeimg from '../../images/home/Rectangle 1x.png';
-import { Navigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { selectUser } from 'redux/user/selectors';
+import homeimg from "../../images/home/Rectangle 1x.png";
+import { Navigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { selectUser } from "../../redux/user/selectors";
 
 export default function Register() {
   const isLoggedIn = useSelector(selectIsLoggedIn);

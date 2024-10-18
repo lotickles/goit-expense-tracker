@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import { Navigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { Navigate } from "react-router-dom";
 
-import { selectIsLoggedIn } from 'redux/auth/selectors';
-import { Filter } from 'components/filter/Filter';
-import { selectFilter, selectStartDate } from 'redux/filter/filterSelector';
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import { Filter } from "../../components/filter/Filter";
+import {
+  selectFilter,
+  selectStartDate,
+} from "../../redux/filter/filterSelector";
 import {
   deleteTransactionThunk,
   getTransactionsThunk,
-} from 'redux/transactions/operations';
-import { selectTransaction } from 'redux/transactions/selectors';
-import { SectionTransaction } from 'components/sectionTransactionList/sectionTransaction';
-import { TotalExpense, TotalIncome } from 'shared/Total';
+} from "../../redux/transactions/operations";
+import { selectTransaction } from "../../redux/transactions/selectors";
+import { SectionTransaction } from "../../components/sectionTransactionList/sectionTransaction";
+import { TotalExpense, TotalIncome } from "../../shared/Total";
 
 import {
   DIV,
@@ -34,22 +37,21 @@ import {
   PH,
   TransactionsContainer,
   ULL,
-} from './Income.styled';
-import svg from '../../images/Sprite.svg';
-import { FramerMotion } from 'helpers/framer-motion';
+} from "./Income.styled";
+import svg from "../../images/Sprite.svg";
+import { FramerMotion } from "../../helpers/framer-motion";
 
 // edit modal
-import Modal from 'components/modal/Modal';
-import { useModal } from 'components/hooks/useModal';
-import OperationForm from 'shared/OperationForm/OperationForm';
-
+import Modal from "../../components/modal/Modal";
+import { useModal } from "../../components/hooks/useModal";
+import OperationForm from "../../shared/OperationForm/OperationForm";
 
 export const Income = () => {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
 
   const { isOpened, openModal, closeModal } = useModal();
-  const [ editData, setEditData ] = useState('')
+  const [editData, setEditData] = useState("");
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const transactions = useSelector(selectTransaction);
@@ -57,20 +59,11 @@ export const Income = () => {
 
   const formattedDate = `${date.year}-${String(date.month).padStart(
     2,
-    '0'
-  )}-${String(date.day).padStart(2, '0')}`;
+    "0"
+  )}-${String(date.day).padStart(2, "0")}`;
 
   useEffect(() => {
-    // const nowDate = new Date();
-    // if (!date) {
-    //   const year = nowDate.getFullYear();
-    //   const month = nowDate.getMonth() + 1;
-    //   const day = nowDate.getDate();
-    //   dispatch(
-    //     getTransactionsThunk({ type: 'incomes', date: { year, month, day } })
-    //   );
-    // }
-    dispatch(getTransactionsThunk({ type: 'incomes', date: formattedDate }));
+    dispatch(getTransactionsThunk({ type: "incomes", date: formattedDate }));
   }, [dispatch, filter, formattedDate, date]);
 
   const handleDelete = (transactionId, transactionComment) => {
@@ -78,7 +71,7 @@ export const Income = () => {
     toast.success(`Transaction ${transactionComment} was deleted`);
   };
 
-  const filterTransactions = transactions.filter(transaction =>
+  const filterTransactions = transactions.filter((transaction) =>
     transaction.comment
       .toLowerCase()
       .trim()
@@ -89,7 +82,7 @@ export const Income = () => {
     return <Navigate to="/login" />;
   }
 
-  const isDeletedCategory = catName => {
+  const isDeletedCategory = (catName) => {
     if (!catName) {
       return `Deleted Category`;
     }
@@ -123,7 +116,7 @@ export const Income = () => {
             <SectionTransaction />
             {filterTransactions?.length ? (
               <TransactionsContainer>
-                {filterTransactions?.map(transaction => (
+                {filterTransactions?.map((transaction) => (
                   <DIV key={transaction._id}>
                     <P1>
                       {isDeletedCategory(transaction.category?.categoryName)}
@@ -132,9 +125,14 @@ export const Income = () => {
                     <P3>{transaction.date}</P3>
                     <P4>{transaction.time}</P4>
                     <P5>{transaction.sum} / UAH</P5>
-                    <EditBtn onClick={() => { setEditData(transaction); openModal() }}>
+                    <EditBtn
+                      onClick={() => {
+                        setEditData(transaction);
+                        openModal();
+                      }}
+                    >
                       <svg width={16} height={16}>
-                        <use href={svg + '#icon-edit-2'}></use>
+                        <use href={svg + "#icon-edit-2"}></use>
                       </svg>
                       <span>Edit</span>
                     </EditBtn>
@@ -144,7 +142,7 @@ export const Income = () => {
                       }
                     >
                       <svg width={16} height={16}>
-                        <use href={svg + '#icon-trash-2'}></use>
+                        <use href={svg + "#icon-trash-2"}></use>
                       </svg>
                       <span>Delete</span>
                     </DelBtn>
@@ -162,7 +160,13 @@ export const Income = () => {
       </FramerMotion>
       {isOpened ? (
         <Modal
-          children={<OperationForm edit={true} editData={editData} closeModal={closeModal} />}
+          children={
+            <OperationForm
+              edit={true}
+              editData={editData}
+              closeModal={closeModal}
+            />
+          }
           closeModal={closeModal}
         />
       ) : null}

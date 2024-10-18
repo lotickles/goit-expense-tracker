@@ -1,8 +1,8 @@
-import { useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 
-import { selectIsLoggedIn } from 'redux/auth/selectors.js';
-import { TotalIncome } from 'shared/Total';
+import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
+import { TotalIncome } from "../../shared/Total";
 
 import {
   AdaptDiv,
@@ -27,22 +27,15 @@ import {
   Third,
   WrapBtn,
   Wrapper,
-} from './Home.styled';
+} from "./Home.styled";
 
-import homeimg from '../../images/home/Rectangle 1x.png';
-import first from '../../images/home/first.jpg';
-import second from '../../images/home/second.png';
-import third from '../../images/home/third.png';
+import homeimg from "../../images/home/Rectangle 1x.png";
+import first from "../../images/home/first.jpg";
+import second from "../../images/home/second.png";
+import third from "../../images/home/third.png";
 
 const Home = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  // const sessionError = useSelector(selectSessionError);
-
-  // useEffect(() => {
-  //   if (isLoggedIn && sessionError) {
-  //     toast.error('Session is expired. Please, log in again');
-  //   }
-  // }, [sessionError, isLoggedIn]);
 
   if (isLoggedIn) {
     return <Navigate to="/transactions/expenses" />;
@@ -59,14 +52,14 @@ const Home = () => {
           <Content>
             <H1>Expense log</H1>
             <H2>
-              Manage Your{' '}
+              Manage Your{" "}
               <H2span
                 href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Finances
-              </H2span>{' '}
+              </H2span>{" "}
               Masterfully!
             </H2>
             <Text>

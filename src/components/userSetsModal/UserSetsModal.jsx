@@ -9,7 +9,7 @@ import {
 } from "../../redux/user/selectors";
 import { BallTriangle } from "react-loader-spinner";
 
-import Symbols from "../../images/svg/Symbols.svg";
+import Symbols from "../../images/svg/Symbols";
 import {
   GrayButton,
   StyledBtnWrap,

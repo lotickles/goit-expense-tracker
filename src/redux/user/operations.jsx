@@ -1,11 +1,11 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { expenseApi } from '../auth/operations';
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { expenseApi } from "../auth/operations";
 
 export const getCurrentUserThunk = createAsyncThunk(
-  'getCurrentUser',
+  "getCurrentUser",
   async (_, thunkApi) => {
     try {
-      const { data } = await expenseApi.get('users/current');
+      const { data } = await expenseApi.get("users/current");
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -14,10 +14,10 @@ export const getCurrentUserThunk = createAsyncThunk(
 );
 
 export const updateUserInfoThunk = createAsyncThunk(
-  'updateUserInfo',
+  "updateUserInfo",
   async (userData, thunkApi) => {
     try {
-      const { data } = await expenseApi.patch('users/info', userData);
+      const { data } = await expenseApi.patch("users/info", userData);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -26,15 +26,15 @@ export const updateUserInfoThunk = createAsyncThunk(
 );
 
 export const changeAvatarThunk = createAsyncThunk(
-  'changeAvatar',
+  "changeAvatar",
   async (avatarFile, thunkApi) => {
     try {
       const formData = new FormData();
-      formData.append('avatar', avatarFile);
+      formData.append("avatar", avatarFile);
 
-      const { data } = await expenseApi.patch('users/avatar', formData, {
+      const { data } = await expenseApi.patch("users/avatar", formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
         },
       });
       return data;
@@ -45,7 +45,7 @@ export const changeAvatarThunk = createAsyncThunk(
 );
 
 export const deleteAvatarThunk = createAsyncThunk(
-  'deleteAvatar',
+  "deleteAvatar",
   async (avatarId, thunkApi) => {
     try {
       const { data } = await expenseApi.delete(`users/avatar/${avatarId}`);

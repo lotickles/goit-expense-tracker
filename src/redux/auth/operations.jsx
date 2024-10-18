@@ -14,10 +14,10 @@ const clearToken = () => {
 };
 
 export const registerThunk = createAsyncThunk(
-  "/register",
+  "register",
   async ({ name, email, password }, thunkApi) => {
     try {
-      const { data } = await expenseApi.post("/auth/register", {
+      const { data } = await expenseApi.post("auth/register", {
         name,
         email,
         password,
@@ -60,7 +60,7 @@ export const refreshThunk = createAsyncThunk(
       sid: thunkApi.getState().auth.sid,
     };
     if (!refreshData.refreshToken) {
-      return thunkApi.rejectWithValue("Token does not exist");
+      return thunkApi.rejectWithValue("Token is not exist");
     }
     try {
       setToken(refreshData.refreshToken);
