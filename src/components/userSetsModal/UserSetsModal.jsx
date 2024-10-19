@@ -1,14 +1,8 @@
-import React, { useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, {useRef, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 
-import { selectLoading, selectUser } from "../../redux/user/selectors";
-import {
-  changeAvatarThunk,
-  deleteAvatarThunk,
-  updateUserInfoThunk,
-} from "../../redux/user/operations";
-
-import { BallTriangle } from "react-loader-spinner";
+import {selectLoading, selectUser} from "redux/user/selectors";
+import {BallTriangle} from "react-loader-spinner";
 
 import Symbols from "../../images/svg/Symbols";
 import {
@@ -24,7 +18,8 @@ import {
   StyledTitle,
   StyledWrap,
 } from "../userSetsModal/UserSetsModal.styled";
-import { toast } from "react-toastify";
+import {toast} from "react-toastify";
+import {changeAvatarThunk, deleteAvatarThunk, updateUserInfoThunk} from "../../redux/user/operations";
 
 const CURRENCIES = [
   { value: "uah", label: "₴ UAH" },

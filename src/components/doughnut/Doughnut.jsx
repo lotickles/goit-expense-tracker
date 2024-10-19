@@ -31,7 +31,7 @@ const DoughnutComponent = () => {
 
   const data = () => {
     const newData = items?.map((item) => item.sum);
-    const segmentColors = items?.map(() => randomColor());
+    const segmentColors = items?.map(item => item.color);
     return {
       labels: [],
       datasets: [
@@ -76,6 +76,7 @@ const DoughnutComponent = () => {
           percentage: ((categorySums[categoryName] / totalSum) * 100).toFixed(
             2
           ),
+          color: randomColor(),
         }));
         setItems(newItems);
         setAllSums(totalSum);
@@ -126,7 +127,7 @@ const DoughnutComponent = () => {
               <ItemStyled
                 data-id={index}
                 key={index}
-                color={data().datasets[0]?.backgroundColor[index]}
+                color={transaction.color}
               >
                 <p>{transaction.category?.categoryName}</p>
                 <p>{`${((transaction.sum / allSums) * 100).toFixed(2)}%`}</p>

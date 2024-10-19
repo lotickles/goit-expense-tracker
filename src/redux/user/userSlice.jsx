@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
-  getCurrentUserThunk,
   updateUserInfoThunk,
   changeAvatarThunk,
   deleteAvatarThunk,
-} from "./operations.js";
+  getCurrentUserThunk,
+} from "./operations";
 import { loginThunk, registerThunk } from "../auth/operations.jsx";
 import { createTransactionThunk } from "../transactions/operations.jsx";
 

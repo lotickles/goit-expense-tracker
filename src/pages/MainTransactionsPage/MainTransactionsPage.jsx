@@ -37,7 +37,7 @@ const MainTransactionsPage = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      dispatch(getTransactionsThunk({ type: "expenses", date: "" }));
+      dispatch(getTransactionsThunk({ type: "expenses"}));
     }
   }, [dispatch, isLoggedIn]);
 

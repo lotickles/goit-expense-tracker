@@ -20,8 +20,9 @@ import {
   TransactionType,
 } from "./AllCategories.styled.jsx";
 import { CategoryForm } from "../categoryForm/CategoryForm";
-import { OneCategory } from "../../../components/categories/oneCategory";
+import {OneCategory} from "../oneCategory/OneCategory";
 import { schemaCategoryInput } from "../../../helpers/schemas";
+
 
 export const AllCategories = ({
   type,

@@ -3,7 +3,7 @@ import axios from "axios";
 import { getCurrentUserThunk } from "../user/operations";
 
 export const expenseApi = axios.create({
-  baseURL: "https://goit-expense-tracker.b.goit.study/api/",
+  baseURL: "https://expense-tracker.b.goit.study/api/",
 });
 
 export const setToken = (token) => {

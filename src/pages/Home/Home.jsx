@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
-import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { TotalIncome } from "../../shared/Total";
 
 import {
@@ -33,6 +32,7 @@ import homeimg from "../../images/home/Rectangle 1x.png";
 import first from "../../images/home/first.jpg";
 import second from "../../images/home/second.png";
 import third from "../../images/home/third.png";
+import {selectIsLoggedIn} from "../../redux/auth/selectors";
 
 const Home = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);

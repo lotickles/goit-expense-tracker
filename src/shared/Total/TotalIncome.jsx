@@ -4,7 +4,7 @@ import React from "react";
 // selector
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/user/selectors";
-import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
 // svg
 import arrow from "../../images/Sprite.svg";
 
