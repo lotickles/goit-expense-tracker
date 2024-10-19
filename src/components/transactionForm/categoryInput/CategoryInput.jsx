@@ -13,9 +13,9 @@ import { Controller } from "react-hook-form";
 import {
   StyledInputWrapper,
   StyledLabel,
-  StyledCategoryInput,ß
+  StyledCategoryInput,
 } from "./CategoryInput.styled";
-import {AllCategories} from "../../categories/allCategories/AllCategories";
+import { AllCategories } from "../../categories/allCategories/AllCategories";
 
 const CategoryInput = ({ control, setValue, setCategoryId, type }) => {
   const { isOpened, openModal, closeModal } = useModal();
