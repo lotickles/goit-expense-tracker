@@ -4,9 +4,9 @@ import {
   updateUserInfoThunk,
   changeAvatarThunk,
   deleteAvatarThunk,
-} from "./operations.js";
-import { loginThunk, registerThunk } from "../auth/operations.jsx";
-import { createTransactionThunk } from "../transactions/operations.jsx";
+} from "./operations";
+import { loginThunk, registerThunk } from "../user/operations";
+import { createTransactionThunk } from "../transactions/operations/";
 
 const initialState = {
   user: {
