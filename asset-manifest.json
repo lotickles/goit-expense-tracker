@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/goit-expense-tracker/static/css/main.f773d2b2.css",
-    "main.js": "/goit-expense-tracker/static/js/main.7ac28b88.js",
-    "static/js/276.12d57b4b.chunk.js": "/goit-expense-tracker/static/js/276.12d57b4b.chunk.js",
+    "main.js": "/goit-expense-tracker/static/js/main.679cd70f.js",
+    "static/js/276.596d8b6f.chunk.js": "/goit-expense-tracker/static/js/276.596d8b6f.chunk.js",
     "static/js/757.93d67604.chunk.js": "/goit-expense-tracker/static/js/757.93d67604.chunk.js",
     "static/js/172.5f1483a9.chunk.js": "/goit-expense-tracker/static/js/172.5f1483a9.chunk.js",
     "static/js/9.aab435eb.chunk.js": "/goit-expense-tracker/static/js/9.aab435eb.chunk.js",
@@ -14,8 +14,8 @@
     "static/js/845.09ed2def.chunk.js": "/goit-expense-tracker/static/js/845.09ed2def.chunk.js",
     "static/js/367.f13a98ae.chunk.js": "/goit-expense-tracker/static/js/367.f13a98ae.chunk.js",
     "static/js/977.a591e3d3.chunk.js": "/goit-expense-tracker/static/js/977.a591e3d3.chunk.js",
-    "static/js/973.4f2c91f3.chunk.js": "/goit-expense-tracker/static/js/973.4f2c91f3.chunk.js",
-    "static/js/526.05e833c5.chunk.js": "/goit-expense-tracker/static/js/526.05e833c5.chunk.js",
+    "static/js/973.4aac8f6c.chunk.js": "/goit-expense-tracker/static/js/973.4aac8f6c.chunk.js",
+    "static/js/526.a386786f.chunk.js": "/goit-expense-tracker/static/js/526.a386786f.chunk.js",
     "static/media/SuisseIntl-Regular.ttf": "/goit-expense-tracker/static/media/SuisseIntl-Regular.7ea99720633194a9e3c4.ttf",
     "static/media/Suisse-Intl-Bold.ttf": "/goit-expense-tracker/static/media/Suisse-Intl-Bold.6e9941f2a44c1939c4ef.ttf",
     "static/media/second.png": "/goit-expense-tracker/static/media/second.d49e4dd24ce300368ed6.png",
@@ -28,8 +28,8 @@
     "index.html": "/goit-expense-tracker/index.html",
     "static/media/eye.svg": "/goit-expense-tracker/static/media/eye.eeff295c23781fcaf0988e367a1f8870.svg",
     "main.f773d2b2.css.map": "/goit-expense-tracker/static/css/main.f773d2b2.css.map",
-    "main.7ac28b88.js.map": "/goit-expense-tracker/static/js/main.7ac28b88.js.map",
-    "276.12d57b4b.chunk.js.map": "/goit-expense-tracker/static/js/276.12d57b4b.chunk.js.map",
+    "main.679cd70f.js.map": "/goit-expense-tracker/static/js/main.679cd70f.js.map",
+    "276.596d8b6f.chunk.js.map": "/goit-expense-tracker/static/js/276.596d8b6f.chunk.js.map",
     "757.93d67604.chunk.js.map": "/goit-expense-tracker/static/js/757.93d67604.chunk.js.map",
     "172.5f1483a9.chunk.js.map": "/goit-expense-tracker/static/js/172.5f1483a9.chunk.js.map",
     "9.aab435eb.chunk.js.map": "/goit-expense-tracker/static/js/9.aab435eb.chunk.js.map",
@@ -41,11 +41,11 @@
     "845.09ed2def.chunk.js.map": "/goit-expense-tracker/static/js/845.09ed2def.chunk.js.map",
     "367.f13a98ae.chunk.js.map": "/goit-expense-tracker/static/js/367.f13a98ae.chunk.js.map",
     "977.a591e3d3.chunk.js.map": "/goit-expense-tracker/static/js/977.a591e3d3.chunk.js.map",
-    "973.4f2c91f3.chunk.js.map": "/goit-expense-tracker/static/js/973.4f2c91f3.chunk.js.map",
-    "526.05e833c5.chunk.js.map": "/goit-expense-tracker/static/js/526.05e833c5.chunk.js.map"
+    "973.4aac8f6c.chunk.js.map": "/goit-expense-tracker/static/js/973.4aac8f6c.chunk.js.map",
+    "526.a386786f.chunk.js.map": "/goit-expense-tracker/static/js/526.a386786f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f773d2b2.css",
-    "static/js/main.7ac28b88.js"
+    "static/js/main.679cd70f.js"
   ]
 }
