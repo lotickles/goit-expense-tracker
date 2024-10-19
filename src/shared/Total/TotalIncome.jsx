@@ -44,7 +44,7 @@ const TotalIncome = () => {
 
     return isLessThanFourDigits
       ? inputString
-      : inputString?.replace(/(\d)(?=(\d{3})+$)/g, "$1.");
+      : inputString?.replace(/(\d)(?=(\d{3})+$)/g, "$1,");
   };
 
   // styles for mock-data
